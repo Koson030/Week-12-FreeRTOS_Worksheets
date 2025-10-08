@@ -422,6 +422,18 @@ ESP_LOGI(TAG, "Task state: %s", state_names[state]);
 4. การใช้ vTaskDelete(NULL) vs vTaskDelete(handle) ต่างกันอย่างไร?
 5. Priority 0 กับ Priority 24 อันไหนสูงกว่า?
 
+## เฉลยคำถามทบทวน
+1. **เหตุใด Task function ต้องมี infinite loop?**
+    - เพื่อให้ task ทำงานต่อเนื่อง ไม่จบการทำงานทันทีหลังถูกสร้าง
+2. **ความหมายของ stack size ใน xTaskCreate()**
+    - เป็นขนาดหน่วยความจำที่จัดสรรให้แต่ละ task สำหรับเก็บ local variables และการเรียกฟังก์ชัน
+3. **ความแตกต่างระหว่าง vTaskDelay() และ vTaskDelayUntil()**
+    - vTaskDelay() หน่วงเวลาจากเวลาปัจจุบัน, vTaskDelayUntil() หน่วงเวลาจนถึงเวลาที่กำหนด (เหมาะกับงาน periodic)
+4. **vTaskDelete(NULL) vs vTaskDelete(handle)**
+    - NULL ลบ task ที่กำลังรันอยู่, handle ลบ task ที่ระบุ
+5. **Priority 0 กับ Priority 24 อันไหนสูงกว่า?**
+    - Priority 24 สูงกว่า (priority สูงจะถูก scheduler เลือกก่อน)
+
 ## บทสรุป
 
 ในแลปนี้คุณได้เรียนรู้:

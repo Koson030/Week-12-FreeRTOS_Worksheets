@@ -458,6 +458,18 @@ void dynamic_stack_monitor(TaskHandle_t task_handle, const char* task_name)
 4. การตั้งค่า stack size ควรพิจารณาจากอะไร?
 5. Recursion ส่งผลต่อ stack usage อย่างไร?
 
+## เฉลยคำถามสำหรับวิเคราะห์
+1. **Task ไหนใช้ stack มากที่สุด? เพราะอะไร?**
+    - Task ที่มีการเรียกฟังก์ชันซ้อนกันลึก หรือใช้ local variables ขนาดใหญ่จะใช้ stack มากที่สุด
+2. **การใช้ heap แทน stack มีข้อดีอย่างไร?**
+    - Heap เหมาะกับข้อมูลขนาดใหญ่หรือ dynamic, ลดโอกาส stack overflow
+3. **Stack overflow เกิดขึ้นเมื่อไหร่และทำอย่างไรป้องกัน?**
+    - เกิดเมื่อใช้ stack เกินขนาดที่กำหนด ป้องกันโดยกำหนด stack size ให้เหมาะสมและเปิด stack overflow checking
+4. **การตั้งค่า stack size ควรพิจารณาจากอะไร?**
+    - พิจารณาจาก worst-case usage, recursion depth, ขนาด local variables
+5. **Recursion ส่งผลต่อ stack usage อย่างไร?**
+    - เพิ่มการใช้ stack ตามจำนวนชั้นที่เรียกซ้อนกัน อาจทำให้เกิด stack overflow ได้
+
 ## ผลการทดลองที่คาดหวัง
 
 | Task | Stack Size | Usage Pattern | Warning Level |

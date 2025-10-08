@@ -371,6 +371,18 @@ xTaskCreatePinnedToCore(low_priority_task, "LowPrio", 3072, NULL, 1, NULL, 1);  
 4. การเปลี่ยน Priority แบบ dynamic ส่งผลอย่างไร?
 5. CPU utilization ของแต่ละ priority เป็นอย่างไร?
 
+## เฉลยคำถามสำหรับวิเคราะห์
+1. **Priority ไหนทำงานมากที่สุด? เพราะอะไร?**
+    - Priority สูงสุดจะทำงานมากที่สุด เพราะ scheduler จะเลือก task ที่ priority สูงก่อน
+2. **เกิด Priority Inversion หรือไม่? จะแก้ไขได้อย่างไร?**
+    - อาจเกิดได้เมื่อ task priority ต่ำถือ resource/block task priority สูงไว้ แก้ไขด้วย Priority Inheritance
+3. **Tasks ที่มี priority เดียวกันทำงานอย่างไร?**
+    - จะใช้ round-robin คือสลับกันทำงาน
+4. **การเปลี่ยน Priority แบบ dynamic ส่งผลอย่างไร?**
+    - สามารถปรับลำดับการทำงานของ task ได้ตามสถานการณ์ เช่น เพิ่ม responsiveness หรือแก้ปัญหา starvation
+5. **CPU utilization ของแต่ละ priority เป็นอย่างไร?**
+    - Task ที่ priority สูงจะใช้ CPU มากกว่า หากมีหลาย task ที่ priority สูง อาจเกิด starvation กับ task ที่ priority ต่ำ
+
 ## ผลการทดลองที่คาดหวัง
 
 | Priority | Expected Runs | Percentage | Behavior |

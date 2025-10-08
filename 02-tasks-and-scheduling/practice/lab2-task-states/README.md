@@ -475,6 +475,18 @@ void update_state_display(eTaskState current_state)
 4. การ Suspend task ต่างจาก Block อย่างไร?
 5. Task ที่ถูก Delete จะกลับมาได้หรือไม่?
 
+## เฉลยคำถามสำหรับวิเคราะห์
+1. **Task อยู่ใน Running state เมื่อไหร่บ้าง?**
+    - เมื่อถูก scheduler เลือกให้ทำงานบน CPU
+2. **ความแตกต่างระหว่าง Ready และ Blocked state**
+    - Ready: พร้อมรันแต่ยังไม่ได้รับ CPU, Blocked: รอ event หรือ resource เช่น delay/semaphore
+3. **การใช้ vTaskDelay() ทำให้ task อยู่ใน state ใด?**
+    - Blocked state (รอเวลาครบจึงกลับสู่ Ready)
+4. **การ Suspend task ต่างจาก Block อย่างไร?**
+    - Suspend: ถูกหยุดโดย explicit API, Block: รอเงื่อนไขหรือ resource
+5. **Task ที่ถูก Delete จะกลับมาได้หรือไม่?**
+    - ไม่ได้ ต้องสร้างใหม่เท่านั้น
+
 ## ผลการทดลองที่คาดหวัง
 
 | State | เงื่อนไข | LED | ระยะเวลา |
