@@ -235,6 +235,18 @@ idf.py build
 4. โฟลเดอร์ `build/` มีไฟล์อะไรบ้าง?
 5. การใช้ `vTaskDelay()` แทน `delay()` มีความสำคัญอย่างไร?
 
+## เฉลยคำถามทบทวน
+1. **ไฟล์ที่จำเป็นสำหรับโปรเจกต์ ESP-IDF ขั้นต่ำ**
+    - main.c, CMakeLists.txt, sdkconfig, โฟลเดอร์ main/
+2. **ความแตกต่างระหว่าง `hello_esp32.bin` และ `hello_esp32.elf`**
+    - .bin เป็นไฟล์ binary สำหรับแฟลชลงบอร์ด, .elf เป็น Executable and Linkable Format ใช้สำหรับ debug
+3. **คำสั่ง `idf.py set-target`**
+    - ใช้กำหนดเป้าหมายชิป เช่น esp32, esp32s2 ก่อน build
+4. **ไฟล์ในโฟลเดอร์ `build/`**
+    - ไฟล์ .bin, .elf, .map, log, และไฟล์ object ต่างๆ ที่ได้จากการ build
+5. **ความสำคัญของ `vTaskDelay()` แทน `delay()`**
+    - vTaskDelay() เป็นฟังก์ชันของ FreeRTOS ใช้ delay ใน task โดยไม่บล็อก CPU, delay() เป็นฟังก์ชันทั่วไปที่บล็อก CPU
+
 ## บทสรุป
 
 ในแลปนี้คุณได้เรียนรู้:

@@ -315,6 +315,18 @@ idf.py monitor | tee output.log
 4. คำสั่งใดในการออกจาก Monitor mode?
 5. การตั้งค่า Log level สำหรับ tag เฉพาะทำอย่างไร?
 
+## เฉลยคำถามทบทวน
+1. **ความแตกต่างระหว่าง `printf()` และ `ESP_LOGI()`**
+    - `printf()` เป็นฟังก์ชันมาตรฐานสำหรับแสดงผลข้อความ, `ESP_LOGI()` เป็นฟังก์ชัน logging ของ ESP-IDF ที่รองรับ log level และ tag
+2. **Log level ที่แสดงใน default configuration**
+    - ปกติจะเป็น `INFO` หรือ `WARN` แล้วแต่การตั้งค่าใน menuconfig
+3. **การใช้ `ESP_ERROR_CHECK()`**
+    - ใช้ตรวจสอบ error code และแสดงข้อความ error พร้อมหยุดโปรแกรมหากเกิดข้อผิดพลาด
+4. **คำสั่งออกจาก Monitor mode**
+    - กด `Ctrl+]` ใน terminal เพื่อออกจาก idf.py monitor
+5. **การตั้งค่า Log level สำหรับ tag เฉพาะ**
+    - ใช้ฟังก์ชัน `esp_log_level_set("TAG", ESP_LOG_WARN);` เพื่อกำหนด log level สำหรับ tag นั้น
+
 ## บทสรุป
 
 ในแลปนี้คุณได้เรียนรู้:
